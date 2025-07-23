@@ -21,11 +21,11 @@ public class ProdutoController {
 
     @GetMapping("{id}")
     public Produto findById(@PathVariable("id") Integer id){
-        return produtoRepository.findById(id).get();
+        return produtoRepository.findById(id).orElse(null);
     }
 
-    @GetMapping
-    public List<Produto> buscar(@RequestParam("nome") String nome){
+    @GetMapping("nomes")
+    public List<Produto> findByNome(@RequestParam("nome") String nome){
         return produtoRepository.findByNome(nome);
     }
 
